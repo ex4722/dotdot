@@ -111,12 +111,12 @@ keys = [
 
 groups = [Group(i) for i in "1234567890"]
 group_names = [
-    ("", {'layout': 'monadtall' }),
-    ("", {'layout': 'monadtall'}),
+    ("", {'layout': 'monadtall', "spawn":"/opt/waterfox/waterfox"}),
+    ("", {'layout': 'monadtall', "spawn":"alacritty"}),
     ("", {'layout': 'monadtall'}),
     ("", {'layout': 'monadtall'}),
     ("", {'layout': 'monadtall'}),
-    ("ﭮ", {'layout': 'monadtall'}),
+    ("ﭮ", {'layout': 'monadtall', "spawn":"discord"}),
     ("", {'layout': 'monadtall'}),
     ("", {'layout': 'monadtall'}),
     ("", {'layout': 'floating'}),
@@ -415,7 +415,6 @@ wmname = "LG3D"
 def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
-
 
 
 
