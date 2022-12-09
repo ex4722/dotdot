@@ -128,7 +128,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 bindkey -M vicmd '^r' fzf_history_search 
 
-eval "$(thefuck --alias)"
+#eval "$(thefuck --alias)"
 
 
 export NVM_DIR="$HOME/.nvm"
