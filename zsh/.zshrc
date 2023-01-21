@@ -38,6 +38,7 @@ export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin/
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:/opt/llvm-project/build/bin
+export PATH="/home/ex/.local/share/solana/install/active_release/bin:$PATH"
 
 # export LD_LIBRARY_PATH=/opt/llvm-project/build/lib:$LD_LIBRARY_PATH
 
@@ -95,7 +96,7 @@ alias e="emacsclient -c -a 'emacs'"
 
 # CTFing
 # alias www="list_ips && ls_pwd && sudo python3 -m http.server 80"
-alias www="list_ips && sudo python3 -m http.server 80"
+alias www="list_ips && python3 -m http.server 8080"
 alias tun0="ifconfig tun0 | grep 'inet ' | cut -d' ' -f10 | tr -d '\n' | xclip -sel clip"
 py_tty_upgrade () {
   echo "python -c 'import pty;pty.spawn(\"/bin/bash\")'"| xclip -sel clip
@@ -128,7 +129,8 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 bindkey -M vicmd '^r' fzf_history_search 
 
-#eval "$(thefuck --alias)"
+alias doom="~/.emacs.d/bin/doom"
+eval "$(thefuck --alias)"
 
 
 export NVM_DIR="$HOME/.nvm"
