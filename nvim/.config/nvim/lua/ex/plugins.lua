@@ -10,85 +10,38 @@ local ensure_packer = function()
 end
 
 local packer_bootstrap = ensure_packer()
-
-vim.cmd([[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerInstall
-augroup end
-]])
-
-local packer = require("packer")
-packer.init {
-    display = {
-        open_fn = function()
-            return require("packer.util").float { border = "rounded" }
-        end,
-    },
-}
-
 return require('packer').startup(function(use)
-    -- Core Package
+    -- Core Packages 
     use 'wbthomason/packer.nvim'
-    use 'nvim-lua/plenary.nvim'
+    use "nvim-lua/plenary.nvim"
 
-
-    -- LSP
-    use 'neovim/nvim-lspconfig'
-    use 'ms-jpq/coq_nvim'
-    use {'ms-jpq/coq.artifacts', branch= 'artifacts'}
-    use 'jubnzv/virtual-types.nvim'
-    use 'glepnir/lspsaga.nvim'
-    use 'gfanto/fzf-lsp.nvim'
-    use 'ray-x/lsp_signature.nvim'
-
-    -- Grepper
-    use 'nvim-pack/nvim-spectre'
-
-
-    -- Quality of Life 
-    use 'mbbill/undotree'
-    use 'tpope/vim-commentary'
-    use 'mattn/emmet-vim'
-
-
-    -- Git 
-    use 'TimUntersberger/neogit'
-
-    -- Treees
-    use 'nvim-treesitter/nvim-treesitter'
-    use 'p00f/nvim-ts-rainbow'
-    use 'windwp/nvim-autopairs'
-    use 'nvim-treesitter/nvim-treesitter-context'
-    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-
-
-
-
-    -- Telly
-    use 'junegunn/fzf.vim'
-    use 'junegunn/fzf'
-
-
-    -- Theme  
-    use 'kdheepak/tabline.nvim'
+    -- Themes
+    use "nvim-tree/nvim-web-devicons"
     use "lifepillar/vim-solarized8"
-    use "kyazdani42/nvim-web-devicons"
+
+    -- Tools
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = { 
+            "MunifTanjim/nui.nvim",
+        }
     }
-    use 'nvim-tree/nvim-tree.lua'
-    use 'onsails/lspkind.nvim'
+    use 'ThePrimeagen/harpoon'
+    use 'mbbill/undotree'
 
-    -- Dab on dem
-    use 'mfussenegger/nvim-dap'
-    use 'mfussenegger/nvim-dap-python'
-    use 'rcarriga/nvim-dap-ui'
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'nvim-telescope/telescope-dap.nvim'
+    -- Treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter', 
+        run = ":TSUpdate"
+    }
+    -- TELLY
+    use {'nvim-telescope/telescope.nvim', tag = '0.1.1'}
 
-
+    -- Orgmode 
+    use 'nvim-orgmode/orgmode' 
+    use 'akinsho/org-bullets.nvim'
+    use 'lukas-reineke/headlines.nvim'
 
     if packer_bootstrap then
         require('packer').sync()
