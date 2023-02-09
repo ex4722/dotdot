@@ -1,5 +1,5 @@
 local options = {
-   scrolloff = 20,
+  scrolloff = 20,
    smartindent = true,
    number = true,
    relativenumber = true,

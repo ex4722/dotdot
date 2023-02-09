@@ -12,4 +12,3 @@ vim.cmd('hi LspSagaFinderSelection guifg=#d33682')
 vim.cmd('hi FloatBorder guifg=#b3deef')
 vim.cmd('hi NormalFloat guibg=#002b36 guifg=#268bd2')
 vim.cmd('highlight VertSplit guibg=#002b36')
-

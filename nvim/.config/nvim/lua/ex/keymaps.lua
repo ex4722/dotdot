@@ -44,9 +44,6 @@ k("n", "<A-u>", ":UndotreeToggle<CR>", conf)
 
 
 -- Tmux run program
-local buf = vim.api.nvim_get_current_buf() 
-local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-
 M.save_and_exec = function()
     local ft = vim.api.nvim_buf_get_option(0, 'filetype')
     if ft == 'vim' or ft == 'lua' then

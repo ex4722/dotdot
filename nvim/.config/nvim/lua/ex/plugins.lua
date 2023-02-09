@@ -29,12 +29,14 @@ return require('packer').startup(function(use)
     }
     use 'ThePrimeagen/harpoon'
     use 'mbbill/undotree'
+    use 'TimUntersberger/neogit'
 
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter', 
         run = ":TSUpdate"
     }
+
     -- TELLY
     use {'nvim-telescope/telescope.nvim', tag = '0.1.1'}
 
@@ -43,6 +45,19 @@ return require('packer').startup(function(use)
     use 'akinsho/org-bullets.nvim'
     use 'lukas-reineke/headlines.nvim'
 
+    -- Lsp 
+    use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP 
+    use 'williamboman/mason.nvim'
+    use "williamboman/mason-lspconfig.nvim"
+    use 'mfussenegger/nvim-lint'
+    use 'jose-elias-alvarez/null-ls.nvim'
+    use 'glepnir/lspsaga.nvim'
+    use 'onsails/lspkind.nvim'
+    use 'ms-jpq/coq_nvim'
+
+
+    -- Dab on em 
+    use 'mfussenegger/nvim-dap'
     if packer_bootstrap then
         require('packer').sync()
     end
