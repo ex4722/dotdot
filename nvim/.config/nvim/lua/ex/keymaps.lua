@@ -51,7 +51,7 @@ M.save_and_exec = function()
         vim.cmd('source %')
     elseif ft == 'python' then
         vim.cmd('silent! write')
-        vim.cmd("exec '!tmux new-window ipython -i' shellescape(@%, 1)")
+        vim.cmd("exec 'silent !tmux new-window ipython -i' shellescape(@%, 1)")
 
     elseif ft == 'c' then
         vim.cmd('silent! write')
