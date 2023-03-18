@@ -15,6 +15,12 @@ require("ex.lsp.kind")
 require("ex.lsp.null")
 
 require("ex.neogit")
+require("ex.sign")
+require("ex.line")
+require("ex.line")
+require("ex.tabline")
+
+-- require("ex.tabby")
 
 
 -- TODO
