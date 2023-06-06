@@ -12,6 +12,9 @@ require("lspconfig").clangd.setup(coq.lsp_ensure_capabilities({
 require("lspconfig").tsserver.setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach
 }))
+require("lspconfig").html.setup(coq.lsp_ensure_capabilities({
+    on_attach = on_attach
+}))
 
 -- require("lspconfig").arduino_language_server.setup(coq.lsp_ensure_capabilities({
 --     on_attach = on_attach,

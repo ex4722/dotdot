@@ -11,6 +11,17 @@ k("", "<Space>", "<Nop>", conf)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Moving text around in visual mode
+k("v", "J", ":m '>+1<CR>gv=gv", conf)
+k("v", "K", ":m '<-2<CR>gv=gv", conf)
+k("v", "<", "<gv", conf)
+k("v", ">", ">gv", conf)
+
+k("x", "J", ":m '>+1<CR>gv=gv", conf)
+k("x", "K", ":m '<-2<CR>gv=gv", conf)
+k("x", "<", "<gv", conf)
+k("x", ">", ">gv", conf)
+
 
 
 -- Best remap
@@ -20,12 +31,30 @@ k("i", "jk", "<ESC>", conf)
 k("", "<C-p>", "<C-r>+", conf)
 k("", "Y", "\"+y", conf)
 
+k("n", ",<cr>", ":noh<cr>", conf)
+k("n", ",q", ":q!<cr>", conf)
+k("n", ",x", ":x<cr>", conf)
+
+-- Cursor Location during finds 
+k("n", "n", "nzzzv", conf)
+k("n", "N", "Nzzzv", conf)
+k("n", "J", "mzJ`z", conf)
+k("n", "ac", "ggVG", conf)
+
+
 -- Neotree
 k("n","<C-e>", ":NeoTreeRevealToggle<CR>", conf)
 
 -- Telly
 k("n","<C-x><C-f>", ":Telescope find_files<CR>", conf)
 k("n","<leader>pf", ":Telescope find_files<CR>", conf)
+k("n","<C-x>b", ":Telescope buffers<CR>", conf)
+k("n","<C-s>", ":Telescope live_grep<CR>", conf)
+ 
+
+-- Git 
+k("n","<leader>g", ":Neogit<CR>", conf)
+
 
 -- OrgMode
 k("n", "<leader>a", ":lua require('orgmode').action('agenda.prompt')<CR>", conf)
@@ -41,6 +70,10 @@ k("n", "<A-3>", ":lua require('harpoon.ui').nav_file(3)<CR>", conf)
 
 -- Undo Tree 
 k("n", "<A-u>", ":UndotreeToggle<CR>", conf)
+
+-- Use harpoons and buffers noob
+-- k("n", "<tab>", ":TablineBufferNext<CR>", conf)
+-- k("n", "<S-tab>", ":tabnex<CR>", conf)
 
 
 -- Tmux run program

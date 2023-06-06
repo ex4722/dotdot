@@ -3,7 +3,7 @@ require('orgmode').setup_ts_grammar()
 -- Treesitter configuration
 
 require('orgmode').setup({
-    --  org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
+     org_agenda_files = {'~/orgfiles/tasks.org'},
     --  org_default_notes_file = '~/Dropbox/org/refile.org',
 }) 
 

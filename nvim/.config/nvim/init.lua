@@ -13,6 +13,7 @@ require("ex.lsp.setup")
 require("ex.lsp.saga")
 require("ex.lsp.kind")
 require("ex.lsp.null")
+require("ex.lsp.massy")
 
 require("ex.neogit")
 require("ex.sign")
@@ -24,12 +25,15 @@ require("ex.tabline")
 
 
 -- TODO
--- Tab complete
+-- **Tab complete** cock or cmp?
 
--- Git Stuff
+-- harpoon
+-- gitsigns 
 -- TAbline 
 -- treesitter context
 -- autopair + rainbow 
 -- spectre for grepping
--- commentary 
--- undo treee
+-- Nonvim stuff: Linux CMDLINE
+
+-- setup gitsigns, statusbar??, spectre
+-- debugging HELLLLLLLLFIRe

@@ -25,6 +25,7 @@ local options = {
    guicursor = '',
    mouse = 'c',
    cmdheight=1,
+   showtabline = 2,
 
 }
 for opt, value in pairs(options) do
