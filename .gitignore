@@ -21,3 +21,12 @@ eln-cache*
 .[#]*[#]
 auto-save-list*
 .dir-locals.el
+**/__pycache__/**
+*.py[cod]
+node_modules
+package*
+ipython/.ipython/profile_default/history*
+**/__pycache__/
+__pycache__
+ipython/.ipython/profile_default/db/dhist
+qtile/.config/qtile/__pycache__/config.cpython-310.pyc

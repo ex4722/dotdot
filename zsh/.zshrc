@@ -26,7 +26,7 @@ ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 
-plugins=(enhancd git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages zsh-fzf-history-search)
+plugins=(enhancd asdf git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages zsh-fzf-history-search)
 
 source $ZSH/oh-my-zsh.sh
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
@@ -78,11 +78,11 @@ alias gc="git commit -m"
 alias gp="git push"
 alias clip="xclip -selection c"
 alias pwnstart="docker "
-alias pi="pwninit --template-path /opt/exploit.py"
+alias pi="pwninit --template-path /opt/pwn_temp.py"
 alias check='checksec'
 
 
-alias p='ptipython'
+alias p='ipython'
 alias t='tmux'
 alias g='gdb'
 alias c='clear'
@@ -141,3 +141,22 @@ export NVM_DIR="$HOME/.nvm"
 # alias node='unalias node npm && load_nvm && node'
 # alias npm='unalias node npm && load_nvm && npm'
 alias luamake=/opt/lua-language-server/3rd/luamake/luamake
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# Disable zsh-autocompletion on paste
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+ pastefinish() {
+   zle -N self-insert $OLD_SELF_INSERT
+ }
+ zstyle :bracketed-paste-magic paste-init pasteinit
+ zstyle :bracketed-paste-magic paste-finish pastefinish
+
+
+. ~/.asdf/plugins/java/set-java-home.zsh
+. "$HOME/.asdf/asdf.sh"
