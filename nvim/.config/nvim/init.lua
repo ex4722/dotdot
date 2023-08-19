@@ -1,39 +1,16 @@
-require("ex.options")
-require("ex.plugins")
+require("ex.plugs")
+require("ex.settings")
 require("ex.colors")
 require("ex.keymaps")
-require("ex.neo_tree")
-require("ex.tree_sitter")
-require("ex.org_mode")
+require("ex.lsp")
+require("ex.cmp")
+require("ex.treesitter")
 require("ex.telly")
+require("ex.git")
 
-require("ex.lsp.coq")
-require("ex.lsp.lsp")
-require("ex.lsp.setup")
-require("ex.lsp.saga")
-require("ex.lsp.kind")
-require("ex.lsp.null")
-require("ex.lsp.massy")
-
-require("ex.neogit")
-require("ex.sign")
-require("ex.line")
-require("ex.line")
-require("ex.tabline")
-
--- require("ex.tabby")
+-- require("ex.which")
 
 
--- TODO
--- **Tab complete** cock or cmp?
-
--- harpoon
--- gitsigns 
--- TAbline 
--- treesitter context
--- autopair + rainbow 
--- spectre for grepping
--- Nonvim stuff: Linux CMDLINE
-
--- setup gitsigns, statusbar??, spectre
--- debugging HELLLLLLLLFIRe
+-- Shit left
+-- Tabline theme
+-- Project Managment

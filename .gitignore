@@ -30,3 +30,4 @@ ipython/.ipython/profile_default/history*
 __pycache__
 ipython/.ipython/profile_default/db/dhist
 qtile/.config/qtile/__pycache__/config.cpython-310.pyc
+nvim/.config/nvim/undodir/

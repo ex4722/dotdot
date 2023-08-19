@@ -22,8 +22,6 @@ k("x", "K", ":m '<-2<CR>gv=gv", conf)
 k("x", "<", "<gv", conf)
 k("x", ">", ">gv", conf)
 
-
-
 -- Best remap
 k("i", "jk", "<ESC>", conf)
 
@@ -31,52 +29,28 @@ k("i", "jk", "<ESC>", conf)
 k("", "<C-p>", "<C-r>+", conf)
 k("", "Y", "\"+y", conf)
 
-k("n", ",<cr>", ":noh<cr>", conf)
-k("n", ",q", ":q!<cr>", conf)
-k("n", ",x", ":x<cr>", conf)
 
--- Cursor Location during finds 
-k("n", "n", "nzzzv", conf)
-k("n", "N", "Nzzzv", conf)
-k("n", "J", "mzJ`z", conf)
-k("n", "ac", "ggVG", conf)
+vim.keymap.set('n', '<A-u>', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>gg', require('neogit').open)
 
+vim.keymap.set('n', '<C-x><C-s>', ":w<cr>")
 
--- Neotree
-k("n","<C-e>", ":NeoTreeRevealToggle<CR>", conf)
+-- harpoon 
+vim.keymap.set('n', 'Ha', ":lua require('harpoon.mark').add_file()<CR>")
+vim.keymap.set('n', 'H', ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
 
--- Telly
-k("n","<C-x><C-f>", ":Telescope find_files<CR>", conf)
-k("n","<leader>pf", ":Telescope find_files<CR>", conf)
-k("n","<C-x>b", ":Telescope buffers<CR>", conf)
-k("n","<C-s>", ":Telescope live_grep<CR>", conf)
- 
-
--- Git 
-k("n","<leader>g", ":Neogit<CR>", conf)
+vim.keymap.set('n', '<leader>a', ":lua require('harpoon.ui').nav_file(1)<CR>")
+vim.keymap.set('n', '<leader>s', ":lua require('harpoon.ui').nav_file(2)<CR>")
+vim.keymap.set('n', '<leader>d', ":lua require('harpoon.ui').nav_file(3)<CR>")
+vim.keymap.set('n', '<leader>f', ":lua require('harpoon.ui').nav_file(4)<CR>")
 
 
--- OrgMode
-k("n", "<leader>a", ":lua require('orgmode').action('agenda.prompt')<CR>", conf)
-k("n", "<leader>c", ":lua require('orgmode').action('capture.prompt')<CR>", conf)
-
--- Harpoon
-k("n", "H", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", conf)
-k("n", "<leader>h", ":lua require('harpoon.mark').add_file()<CR>", conf)
-
-k("n", "<A-1>", ":lua require('harpoon.ui').nav_file(1)<CR>", conf)
-k("n", "<A-2>", ":lua require('harpoon.ui').nav_file(2)<CR>", conf)
-k("n", "<A-3>", ":lua require('harpoon.ui').nav_file(3)<CR>", conf)
-
--- Undo Tree 
-k("n", "<A-u>", ":UndotreeToggle<CR>", conf)
-
--- Use harpoons and buffers noob
--- k("n", "<tab>", ":TablineBufferNext<CR>", conf)
--- k("n", "<S-tab>", ":tabnex<CR>", conf)
 
 
--- Tmux run program
+-- Telly 
+vim.keymap.set('n', '<leader>pf', ":Telescope find_files<CR>")
+vim.keymap.set('n', '<leader>pr', ":Telescope live_grep<CR>")
+
 M.save_and_exec = function()
     local ft = vim.api.nvim_buf_get_option(0, 'filetype')
     if ft == 'vim' or ft == 'lua' then
@@ -100,4 +74,5 @@ M.save_and_exec = function()
 end
 
 k("n" , "<C-b>", ":lua require('ex.keymaps').save_and_exec()<CR>", conf)
+
 return M
