@@ -40,6 +40,7 @@ require("lazy").setup({
         'machakann/vim-sandwich',
         {"Cassin01/wf.nvim", version = "*", config = function() require("wf").setup() end},
         'tpope/vim-commentary',
+        'mhartington/formatter.nvim',
         -- Mangement
         'mbbill/undotree',
         -- {
