@@ -1,3 +1,4 @@
+-- hi jermely
 local signs = {
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn",  text = "" },
