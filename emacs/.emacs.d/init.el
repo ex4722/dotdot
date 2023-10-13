@@ -269,7 +269,7 @@
 (setq org-ellipsis " ▾")
 
 (setq org-agenda-files
-	  '("~/life/tasks.org" "~/life/events.org" "~/life/refile.org" "~/life/school.org" "~/orgfiles/journal.org")
+	  '("~/life/tasks.org" "~/life/events.org" "~/life/refile.org" "~/life/school.org" "~/life/journal.org")
 )
 (setq org-agenda-window-setup 'only-window)
 
@@ -420,18 +420,18 @@
 
 	    ("j" "Journal Entries")
 	    ("jj" "Journal" entry
-	     (file+olp+datetree "~/orgfiles/journal.org")
+	     (file+olp+datetree "~/life/journal.org")
 	     "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
 	     ;; ,(dw/read-file-as-string "~/Notes/Templates/Daily.org")
 	     :clock-in :clock-resume
 	     :empty-lines 1)
 	    ("jm" "Morning Journal" entry
-	     (file+olp+datetree "~/orgfiles/journal.org")
+	     (file+olp+datetree "~/life/journal.org")
 	     "\n* %<%I:%M %p> - Journal :journal:\n%?\n** Morning Entry\n*** Looking Forward To\n*** Day Plan\n*** Misc"
 	     :clock-in :clock-resume
 	     :empty-lines 1)
 	  ("m" "Metrics Capture")
-	("mw" "Weight" table-line (file+headline "~/Projects/Code/emacs-from-scratch/OrgFiles/Metrics.org" "Weight")
+	("mw" "Weight" table-line (file+headline "~/Projects/Code/emacs-from-scratch/life/Metrics.org" "Weight")
 	 "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)
 ))
 
