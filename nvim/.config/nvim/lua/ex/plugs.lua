@@ -37,7 +37,7 @@ require("lazy").setup({
         'HiPhish/nvim-ts-rainbow2',
         { "snelling-a/better-folds.nvim", config = function() require("better-folds").setup() end },
         -- Shortcuts
-        'machakann/vim-sandwich',
+        "machakann/vim-sandwich",
         {"Cassin01/wf.nvim", version = "*", config = function() require("wf").setup() end},
         'tpope/vim-commentary',
         'mhartington/formatter.nvim',
