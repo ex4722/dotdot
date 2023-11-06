@@ -1,0 +1,15 @@
+(undo-tree-save-format-version . 1)
+"d1a60e9d2af7420b4b2a6e285ecd216682d60ee4"
+[nil nil nil nil (25876 19943 713881 128000) 0 nil]
+([nil nil ((nil rear-nonsticky nil 314 . 315) (nil fontified nil 287 . 315) (287 . 315) (#("JetBrainsMono Nerd Font Mono" 0 28 (src-block t help-echo nil face (font-lock-string-face org-block) font-lock-multiline t font-lock-fontified t fontified t)) . 287) (undo-tree-id0 . -27) 306 (t 25859 36053 723982 338000)) nil (25897 28224 835779 202000) 0 nil])
+([nil nil ((#("orgfiles" 0 4 (fontified t font-lock-fontified t help-echo nil src-block t font-lock-multiline t face (font-lock-string-face org-block)) 4 7 (fontified t font-lock-fontified t help-echo nil src-block t font-lock-multiline t face (font-lock-string-face org-block)) 7 8 (fontified t font-lock-fontified t help-echo nil src-block t font-lock-multiline t face (font-lock-string-face org-block))) . 10167) (undo-tree-id6 . -7) (undo-tree-id7 . -7) (t 25876 19943 729032 668000)) nil (25897 28238 138841 325000) 0 nil] [nil nil ((#("s" 0 1 (fontified t font-lock-fontified t font-lock-multiline t face (font-lock-string-face org-block) help-echo nil src-block t)) . 10174) (undo-tree-id0 . -1) (t 25876 19943 729032 668000)) ((10174 . 10175)) (25897 28224 835530 185000) 0 nil])
+([nil nil ((10167 . 10171)) nil (25897 28238 138839 448000) 0 nil])
+nil
+([nil nil ((#("OrgFiles" 0 8 (fontified t)) . 16955) (undo-tree-id5 . -7)) nil (25897 28238 138838 479000) 0 nil])
+([nil nil ((16955 . 16959)) nil (25897 28238 138836 940000) 0 nil])
+([nil nil ((#("orgfiles" 0 8 (fontified t)) . 16651) (undo-tree-id3 . -7) (undo-tree-id4 . -8)) nil (25897 28238 138835 994000) 0 nil])
+([nil nil ((16651 . 16654)) nil (25897 28238 138833 308000) 0 nil])
+([nil nil ((#("orgfiles" 0 8 (fontified t)) . 16382) (undo-tree-id1 . -7) (undo-tree-id2 . -8)) nil (25897 28238 138832 104000) 0 nil])
+([nil nil ((16382 . 16386)) nil (25897 28238 138780 153000) 0 nil])
+([nil current ((16650 . 16651)) nil (25897 28238 138776 648000) 0 nil])
+nil

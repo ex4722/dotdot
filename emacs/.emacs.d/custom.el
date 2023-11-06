@@ -3,7 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files '("/home/ex/orgfiles/tasks.org"))
+ '(org-agenda-files
+   '("/home/ex/life/tasks.org" "/home/ex/life/events.org" "/home/ex/life/refile.org" "/home/ex/life/school.org"))
  '(package-selected-packages
    '(org-pdftools pdf-tools deft poet-theme undo-fu rainbow-mode sunshine calfw-org calfw-cal calfw-ical calfw url-http-oauth oauth2-request oauth2 org-caldav org-gcal undo-tree evil-nerd-commenter lsp-ivy company-box company lsp-pyright lsp-mode tree-sitter-langs tree-sitter org-roam-ui org-roam emacsql-sqlite visual-fill-column org-bullets forge magit counsel-projectile rainbow-delimiters doom-themes doom-modeline all-the-icons ivy-posframe ivy-rich counsel ivy evil-goggles evil-collection evil general persp-projectile perspective which-key use-package)))
 (custom-set-faces
