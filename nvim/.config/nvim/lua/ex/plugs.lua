@@ -20,6 +20,7 @@ require("lazy").setup({
         'neovim/nvim-lspconfig',
         { "williamboman/mason.nvim", run = ":MasonUpdate"},
         'VonHeikemen/lsp-zero.nvim',
+        'mfussenegger/nvim-jdtls',
         -- Autocompletion
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
@@ -34,7 +35,6 @@ require("lazy").setup({
         'dccsillag/magma-nvim',
         "lifepillar/vim-solarized8",
         "nvim-tree/nvim-web-devicons",
-        'HiPhish/nvim-ts-rainbow2',
         { "snelling-a/better-folds.nvim", config = function() require("better-folds").setup() end },
         -- Shortcuts
         'machakann/vim-sandwich',
