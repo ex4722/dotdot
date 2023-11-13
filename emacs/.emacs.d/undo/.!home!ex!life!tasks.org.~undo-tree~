@@ -1,5 +1,0 @@
-(undo-tree-save-format-version . 1)
-"66a96639f3a74d342da26b2cd4d7afa29186a358"
-[nil nil nil nil (25911 60120 278687 744000) 0 nil]
-([nil current ((nil fontified nil 196 . 197) (nil keymap (keymap) 196 . 197) (nil face org-level-2 196 . 197) (nil fontified nil 195 . 196) (nil composition (0 1 [9675]) 195 . 196) (nil keymap (keymap) 195 . 196) (nil face org-level-2 195 . 196) (nil fontified nil 194 . 195) (nil face org-hide 194 . 195) (nil keymap (keymap) 194 . 195) (#("** " 0 1 (fontified nil face org-hide keymap (keymap)) 1 2 (fontified nil composition (0 1 [9675]) keymap (keymap) face org-level-2) 2 3 (fontified nil keymap (keymap) face org-level-2)) . 193) (196 . 200) (193 . 281) (t 25911 24479 59704 11000)) nil (25911 60120 278683 493000) 0 nil])
-nil
