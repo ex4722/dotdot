@@ -95,14 +95,14 @@ return {
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end, opts)
             keymap('n', '<space>D', vim.lsp.buf.type_definition, opts)
-            keymap('n', '<space>rn', vim.lsp.buf.rename, opts)
+            keymap('n', 'gr', vim.lsp.buf.rename, opts)
             keymap({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
             keymap('n', '<space>f', function()
                 vim.lsp.buf.format { async = true }
             end, opts)
             keymap('n', '<leader>H', function() vim.lsp.inlay_hint(0, nil) end, opts )
 
-            keymap('n', 'gr', "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+            keymap('n', 'gf', "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
         end,
     })
