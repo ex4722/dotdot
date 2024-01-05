@@ -10,5 +10,10 @@ return {
         vim.cmd ([[set t_Co=256]])
         vim.cmd("hi VertSplit ctermfg=236 ctermbg=242 guifg=#268bd2 guibg=#002b36")
         vim.cmd("hi NormalFloat guibg=#002b36")
+
+        -- Git Gutter Signs
+        vim.cmd("highlight DiffAdd guifg=#859900 guibg=NONE")
+        vim.cmd("highlight DiffChange guifg=#b58900 guibg=NONE")
+        vim.cmd("highlight DiffDelete gui=bold guifg=#dc322f guibg=NONE")
 end
 }

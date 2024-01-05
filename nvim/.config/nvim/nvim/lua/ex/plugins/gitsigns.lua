@@ -111,9 +111,5 @@ return {
                 map("n", "<leader><leader>d", gs.diffthis)
             end,
         })
-
-        vim.cmd("highlight DiffAdd guifg=#859900 guibg=NONE")
-        vim.cmd("highlight DiffChange guifg=#b58900 guibg=NONE")
-        vim.cmd("highlight DiffDelete gui=bold guifg=#dc322f guibg=NONE")
     end,
 }
