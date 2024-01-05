@@ -2,30 +2,38 @@ return {
     "nvimtools/none-ls.nvim",
     config = function()
         local null_ls = require("null-ls")
-        local null_ls_utils = require("null-ls.utils")
-        local diagnostics = null_ls.builtins.diagnostics -- to setup linters
-        local formatting = null_ls.builtins.formatting -- to setup formatters
-        -- configure null_ls
+        -- local null_ls_utils = require("null-ls.utils")
+        local diagnostics = null_ls.builtins.diagnostics
+        local formatting = null_ls.builtins.formatting
+        local actions = null_ls.builtins.code_actions
         null_ls.setup({
-            -- add package.json as identifier for root (for typescript monorepos)
-            root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
-            -- setup formatters & linters
+            -- root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
             sources = {
-                --  to disable file types use
-                --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
+                diagnostics.alex,
+                diagnostics.checkmake,
+                diagnostics.clang_check,
+                -- diagnostics.codespell,
+                diagnostics.pylint,
+                diagnostics.luacheck,
+                diagnostics.eslint_d.with({
+                    condition = function(utils)
+                        return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+                    end,
+                }),
+
+                formatting.stylua,
+                formatting.black,
+                formatting.isort,
+                formatting.clang_format,
                 formatting.prettier.with({
                     extra_filetypes = { "svelte" },
                 }), -- js/ts formatter
-                formatting.stylua, -- lua formatter
-                formatting.isort,
-                formatting.black,
-                diagnostics.pylint,
-                diagnostics.eslint_d.with({ -- js/ts linter
-                condition = function(utils)
-                    return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
-                end,
-            }),
-        },
-    })
-end
+
+                actions.eslint_d,
+                actions.ltrs,
+                actions.refactoring,
+                actions.xo,
+            },
+        })
+    end,
 }

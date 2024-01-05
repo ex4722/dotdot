@@ -1,5 +1,4 @@
 function get_undodir()
-    local path;
     -- on macbook
     if vim.fn.has("macunix") == 1 then
         return "/User/cxiaoedd/.config/nvim/undodir"
@@ -7,7 +6,7 @@ function get_undodir()
     elseif string.find(vim.fn.hostname(), "dev-dsk") then
         return "/home/cxiaoedd/.config/nvim/undodir"
     -- laptops
-    else 
+    else
         return "/home/ex/.config/nvim/undodir"
     end
 end
@@ -27,7 +26,7 @@ local options = {
    shiftround = true,
    shiftwidth = 4,
    tabstop = 4,
-   softtabstop = 4, 
+   softtabstop = 4,
 
    -- Quality of Life
    wrap = false,

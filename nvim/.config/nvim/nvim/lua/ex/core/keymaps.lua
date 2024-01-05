@@ -1,7 +1,7 @@
 -- Leader to space
 vim.g.mapleader = " "
 
-local keymap = vim.keymap 
+local keymap = vim.keymap
 
 -- jk > ECS
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
@@ -32,3 +32,19 @@ keymap.set("x", "K", ":m '<-2<CR>gv=gv", {desc = "Stays in place during join"})
 
 -- Faster save 2 keys instead of 4
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "Faster Save" })
+
+local M = {}
+
+M.save_and_exec = function()
+    local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    if ft == 'vim' or ft == 'lua' then
+        vim.cmd('silent! write')
+        vim.cmd('source %')
+    elseif ft == 'python' then
+        vim.cmd('silent! write')
+        vim.cmd("exec 'silent !tmux new-window ipython -i' shellescape(@%, 1)")
+    end
+end
+
+keymap.set("n" , "<C-b>", ":lua require('ex.core.keymaps').save_and_exec()<CR>")
+return M

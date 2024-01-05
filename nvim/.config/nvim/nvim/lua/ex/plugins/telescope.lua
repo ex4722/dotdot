@@ -11,6 +11,8 @@ return {
 
         telescope.setup{
             defaults = {
+            file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
+		"%.pdf", "%.mkv", "%.mp4", "%.zip", "undodir/"},
                 mappings = {
                     -- Control J and K to scroll 
                     i = {
@@ -31,7 +33,8 @@ return {
                 },
                 undo = {
                     use_delta = true,
-                }
+                },
+                dress = {}
             }
         }
 
@@ -41,7 +44,7 @@ return {
 
         -- Keymaps 
         local keymap = vim.keymap
-        keymap.set("n", "<leader>pf","<cmd>Telescope find_files theme=ivy<CR>" , { desc = "Project find file" })
+        keymap.set("n", "<leader>pf","<cmd>Telescope find_files<CR>" , { desc = "Project find file" })
         keymap.set("n", "<leader>pr", "<cmd>Telescope live_grep<CR>", { desc = "Project rip grep" })
         keymap.set("n", "<leader>pg", "<cmd>Telescope grep_string<CR>", { desc = "Project grep word under string" })
         keymap.set("n", "<C-x><C-b>", "<cmd>Telescope buffers<CR>", { desc = "Emacs buffer moment" })
