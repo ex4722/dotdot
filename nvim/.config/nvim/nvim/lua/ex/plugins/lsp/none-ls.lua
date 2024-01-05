@@ -11,7 +11,7 @@ return {
             sources = {
                 diagnostics.alex,
                 diagnostics.checkmake,
-                diagnostics.clang_check,
+                -- diagnostics.clang_check,
                 -- diagnostics.codespell,
                 diagnostics.pylint,
                 diagnostics.luacheck,
