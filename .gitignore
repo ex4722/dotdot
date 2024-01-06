@@ -38,3 +38,13 @@ nvim/.config/nvim/lazy-lock.json
 emacs/.emacs.d/undo/.*
 nvim/.config/nvim/lazy-lock.json 
 emacs/.emacs.d/undo/.*
+*emacs/.emacs.d/.cache/*
+
+emacs/.emacs.d/org-caldav-backup.org
+emacs/.emacs.d/persist/
+emacs/.emacs.d/org-caldav-4709d1a.el
+emacs/.emacs.d/oauth2.plstore
+emacs/.emacs.d/games/
+emacs/.emacs.d/forge-database.sqlite
+emacs/.emacs.d/.org-generic-id-locations
+emacs/.emacs.d/.gitignore
