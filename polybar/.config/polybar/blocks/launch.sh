@@ -23,5 +23,3 @@ for m in $(polybar --list-monitors | cut -d":" -f1); do
         HEIGHT=33 INTERFACE=wlan0 MONITOR=$m polybar -q main -c "$DIR/config.ini" &	
     fi
 done
-    # polybar -q main -c "$DIR/config.ini" &
-
