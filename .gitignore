@@ -31,3 +31,6 @@ __pycache__
 ipython/.ipython/profile_default/db/dhist
 qtile/.config/qtile/__pycache__/config.cpython-310.pyc
 nvim/.config/nvim/undodir/
+nvim/lazy-lock.json
+*emacs/.emacs.d/org-roam.db*
+*nvim/.config/nvim/nvim/lazy-lock.json*
