@@ -154,3 +154,12 @@ pasteinit() {
 
 . "$HOME/.asdf/asdf.sh"
 export PATH=$PATH:/home/ex/.spicetify
+
+
+# laptop
+if [ "$HOSTNAME" = "nova"]; then
+    printf '%s\n' "on the right host"
+else
+    # PC
+    printf '%s\n' "uh-oh, not on foo"
+fi
