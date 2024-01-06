@@ -1,70 +1,34 @@
 export ZSH="/home/ex/.oh-my-zsh"
 
-export SUDO_EDITOR=`which nvim`
-
 ZSH_THEME="agnoster"
-
 DEFAULT_USER=ex
 CASE_SENSITIVE="true"
-
 HYPHEN_INSENSITIVE="true"
-
 DISABLE_UPDATE_PROMPT="true"
-export UPDATE_ZSH_DAYS=10
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
-#ZSH_HIGHLIGHT_STYLES[comment]=fg=60
-
 ENABLE_CORRECTION="true"
-
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+export UPDATE_ZSH_DAYS=10
 
 plugins=(enhancd asdf git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages zsh-fzf-history-search)
 
 source $ZSH/oh-my-zsh.sh
-#source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /home/ex/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
-#sh /opt/solarized8.sh
 
-export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin/
 export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:/opt/llvm-project/build/bin
-export PATH="/home/ex/.local/share/solana/install/active_release/bin:$PATH"
 
 # export LD_LIBRARY_PATH=/opt/llvm-project/build/lib:$LD_LIBRARY_PATH
-
-
-
-export PATH="$DENO_INSTALL/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 
-export EDITOR='/usr/local/bin/nvim'
-export VISUAL='/usr/local/bin/nvim'
+export SUDO_EDITOR=`which nvim`
+export EDITOR=`which nvim`
+export VISUAL=`which nvim`
 
-# export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:33,fg+:254,bg+:-1,hl+:33 --color info:136,prompt:136,pointer:230,marker:230,spinner:136'
-
-
-
-bindkey '^k' history-substring-search-up
-bindkey '^j' history-substring-search-down
-
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+# personal aliases
 
 alias tmux="tmux -u"
 alias cd-="cd -"
@@ -86,16 +50,13 @@ alias p='ipython'
 alias t='tmux'
 alias g='gdb'
 alias c='clear'
-alias S='sudoedit'
+alias V='sudoedit'
 alias v='nvim'
 alias fd='fdfind'
 alias e="emacsclient -c -a 'emacs'"
 
 
-
-
 # CTFing
-# alias www="list_ips && ls_pwd && sudo python3 -m http.server 80"
 alias www="list_ips && python3 -m http.server 8080"
 alias tun0="ifconfig tun0 | grep 'inet ' | cut -d' ' -f10 | tr -d '\n' | xclip -sel clip"
 py_tty_upgrade () {
@@ -113,39 +74,22 @@ list_ips() {
 
 alias curlp="curl --proxy http://localhost:8080"
 
-
+# VIM KEYBINDS BITCH
 bindkey -v
-bindkey '^K' history-substring-search-up
-bindkey '^J' history-substring-search-down
 bindkey '^F' autosuggest-accept
-
 bindkey '^[.' insert-last-word
-
 bindkey '^r'  fzf_history_search
-
+bindkey '^k' history-substring-search-up
+bindkey '^j' history-substring-search-down
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-
 bindkey -M vicmd '^r' fzf_history_search 
 
-alias doom="~/.emacs.d/bin/doom"
-eval "$(thefuck --alias)"
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# alias load_nvm='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
-# alias node='unalias node npm && load_nvm && node'
-# alias npm='unalias node npm && load_nvm && npm'
 alias luamake=/opt/lua-language-server/3rd/luamake/luamake
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
-# Disable zsh-autocompletion on paste
+# Disable zsh slow printing
 pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
   zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
@@ -158,14 +102,15 @@ pasteinit() {
  zstyle :bracketed-paste-magic paste-finish pastefinish
 
 
-. ~/.asdf/plugins/java/set-java-home.zsh
-. "$HOME/.asdf/asdf.sh"
 
-export PATH=$PATH:/home/ex/.spicetify
+eval "$(thefuck --alias)"
 
 
 if [ "$HOST" = "pop-os" ]; then
-    # do shit
+    # popos
 else
     # do shit for nova
 fi
+. ~/.asdf/plugins/golang/set-env.zsh
+. ~/.asdf/plugins/java/set-java-home.zsh
+. "$HOME/.asdf/asdf.sh"
