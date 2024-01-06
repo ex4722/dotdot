@@ -16,7 +16,12 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 echo $DIR/config.ini
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-        HEIGHT=33 FONT0=11 FONT0=22 MONITOR=$m polybar -q main -c "$DIR/config.ini" &	
+    if hostname | grep pop-os 
+    then
+        HEIGHT=33 INTERFACE=wlp0s20f3 MONITOR=$m polybar -q main -c "$DIR/config.ini" &	
+    else
+        HEIGHT=33 INTERFACE=wlan0 MONITOR=$m polybar -q main -c "$DIR/config.ini" &	
+    fi
 done
-# polybar -q main -c "$DIR/config.ini" &
+    # polybar -q main -c "$DIR/config.ini" &
 
