@@ -33,21 +33,22 @@ source $ZSH/oh-my-zsh.sh
 source /home/ex/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 #sh /opt/solarized8.sh
 
-# export PATH=$PATH:/usr/local/go/bin
-# export PATH=$PATH:~/.local/bin
-# export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin/
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin/
 export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:/opt/jdk-17.0.8.1/bin
-# export PATH=$PATH:/opt/llvm-project/build/bin
-# export PATH="/home/ex/.local/share/solana/install/active_release/bin:$PATH"
-export EDITOR="nvim"
-export VISUAL="nvim"
-export JAVA_HOME="/opt/jdk-17.0.8.1/bin"
+export PATH=$PATH:/opt/llvm-project/build/bin
+export PATH="/home/ex/.local/share/solana/install/active_release/bin:$PATH"
 
 # export LD_LIBRARY_PATH=/opt/llvm-project/build/lib:$LD_LIBRARY_PATH
 
 
+
+export PATH="$DENO_INSTALL/bin:$PATH"
 export LC_ALL=en_US.UTF-8
+
+export EDITOR='/usr/local/bin/nvim'
+export VISUAL='/usr/local/bin/nvim'
 
 # export FZF_DEFAULT_OPTS='--color fg:-1,bg:-1,hl:33,fg+:254,bg+:-1,hl+:33 --color info:136,prompt:136,pointer:230,marker:230,spinner:136'
 
@@ -55,6 +56,9 @@ export LC_ALL=en_US.UTF-8
 
 bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
+
+
+# export MANPATH="/usr/local/man:$MANPATH"
 
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -73,6 +77,7 @@ alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
 alias clip="xclip -selection c"
+alias pwnstart="docker "
 alias pi="pwninit --template-path /opt/pwn_temp.py"
 alias check='checksec'
 
@@ -125,7 +130,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 bindkey -M vicmd '^r' fzf_history_search 
 
 alias doom="~/.emacs.d/bin/doom"
-#eval "$(thefuck --alias)"
+eval "$(thefuck --alias)"
 
 
 export NVM_DIR="$HOME/.nvm"
@@ -152,7 +157,10 @@ pasteinit() {
  zstyle :bracketed-paste-magic paste-init pasteinit
  zstyle :bracketed-paste-magic paste-finish pastefinish
 
+
+. ~/.asdf/plugins/java/set-java-home.zsh
 . "$HOME/.asdf/asdf.sh"
+
 export PATH=$PATH:/home/ex/.spicetify
 
 
