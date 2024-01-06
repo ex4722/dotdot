@@ -160,3 +160,5 @@ pasteinit() {
 
 . ~/.asdf/plugins/java/set-java-home.zsh
 . "$HOME/.asdf/asdf.sh"
+
+export PATH=$PATH:/home/ex/.spicetify
