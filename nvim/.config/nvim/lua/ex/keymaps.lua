@@ -36,7 +36,7 @@ vim.keymap.set('n', '<leader>gg', require('neogit').open)
 vim.keymap.set('n', '<C-x><C-s>', ":w<cr>")
 
 -- harpoon 
-vim.keymap.set('n', 'Ha', ":lua require('harpoon.mark').add_file()<CR>")
+vim.keymap.set('n', '<leader>h', ":lua require('harpoon.mark').add_file()<CR>")
 vim.keymap.set('n', 'H', ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
 
 vim.keymap.set('n', '<leader>a', ":lua require('harpoon.ui').nav_file(1)<CR>")
