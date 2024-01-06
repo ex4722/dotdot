@@ -164,10 +164,8 @@ pasteinit() {
 export PATH=$PATH:/home/ex/.spicetify
 
 
-# laptop
-if [ "$HOSTNAME" = "nova"]; then
-    printf '%s\n' "on the right host"
+if [ "$HOST" = "pop-os" ]; then
+    # do shit
 else
-    # PC
-    printf '%s\n' "uh-oh, not on foo"
+    # do shit for nova
 fi
