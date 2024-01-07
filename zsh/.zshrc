@@ -111,6 +111,8 @@ if [ "$HOST" = "pop-os" ]; then
 else
     # do shit for nova
 fi
-. ~/.asdf/plugins/golang/set-env.zsh
-. ~/.asdf/plugins/java/set-java-home.zsh
+# . ~/.asdf/plugins/golang/set-env.zsh
+export GOPATH=$(dirname $(dirname `asdf which go` ))
+# . ~/.asdf/plugins/java/set-java-home.zsh
+export JAVAHOME=$(dirname $(dirname `asdf which java` ))
 . "$HOME/.asdf/asdf.sh"
