@@ -194,5 +194,4 @@ exec_always --no-startup-id ~/.config/polybar/blocks/launch.sh
 exec_always --no-startup-id /bin/picom
 exec        --no-startup-id nitrogen --restore 
 exec        --no-startup-id xmodmap ~/.Xmodmap 
-exec        --no-startup-id flameshot
 exec        --no-startup-id xss-lock -- dm-tool switch-to-greeter
