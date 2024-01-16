@@ -3,8 +3,10 @@ function get_undodir()
     if vim.fn.has("macunix") == 1 then
         return "/User/cxiaoedd/.config/nvim/undodir"
     -- dev desktop
-    elseif string.find(vim.fn.hostname(), "dev-dsk") then
+    elseif string.find(vim.fn.hostname(), "dev") then
         return "/home/cxiaoedd/.config/nvim/undodir"
+    elseif string.find(vim.fn.hostname(), "glados") then
+        return "/home/stu3/s14/ex7919/.config/nvim/undodir"
     -- laptops
     else
         return "/home/ex/.config/nvim/undodir"
