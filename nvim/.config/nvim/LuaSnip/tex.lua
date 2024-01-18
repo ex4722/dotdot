@@ -17,8 +17,9 @@ return {
     { trig = "beg" },
     fmta([[
     \begin{<>}
+    <>
     \end{<>}
-    ]], { i(1), rep(1) }
+    ]], { i(1),i(2),rep(1) }
     )
   ),
 }

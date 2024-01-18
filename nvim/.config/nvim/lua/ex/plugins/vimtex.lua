@@ -1,15 +1,17 @@
 return {
     "lervag/vimtex",
 
-  dependencies = {
-      "micangl/cmp-vimtex",
-      "hrsh7th/cmp-omni",
-  },
+    dependencies = {
+        "micangl/cmp-vimtex",
+        "hrsh7th/cmp-omni",
+        "iurimateus/luasnip-latex-snippets.nvim",
+    },
     config = function()
-        require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/LuaSnip/"})
-        require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/tex/test.lua"})
+        -- require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/LuaSnip/" })
+        -- require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/LuaSnip/tex/test.lua" })
+        -- require'luasnip-latex-snippets'.setup({use_treesitter = false, enable_autosnippets = true})
+
         vim.g["vimtex_view_method"] = "zathura"
-        vim.g["vimtex_quickfix_mode"] = 0
 
         -- Ignore mappings
         vim.g["vimtex_mappings_enabled"] = 0
@@ -34,5 +36,9 @@ return {
                 enabled = true,
             },
         })
+
+    local keymap = vim.keymap
+    keymap.set("n", "<leader>ll", "<Cmd>VimtexCompile<CR>", {desc = "Vimtex Compile"})
+    keymap.set("n", "<leader>lj", "<Cmd>VimtexView<CR>", {desc = "Vimtex Jump to Section"})
     end,
 }
