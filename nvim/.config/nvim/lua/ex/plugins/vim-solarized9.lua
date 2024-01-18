@@ -12,6 +12,7 @@ return {
         vim.cmd("hi NormalFloat guibg=#002b36")
 
         -- Git Gutter Signs
+        vim.cmd("highlight SignColumn guibg=NONE")
         vim.cmd("highlight DiffAdd guifg=#859900 guibg=NONE")
         vim.cmd("highlight DiffChange guifg=#b58900 guibg=NONE")
         vim.cmd("highlight DiffDelete gui=bold guifg=#dc322f guibg=NONE")

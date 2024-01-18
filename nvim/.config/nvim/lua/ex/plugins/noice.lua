@@ -21,6 +21,13 @@ return {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                     ["vim.lsp.util.stylize_markdown"] = true,
                     ["cmp.entry.get_documentation"] = true,
+                    ["config.lsp.hover.enabled"] = false,
+                },
+                hover = {
+                    enabled = false,
+                    silent = false, -- set to true to not show a message if hover is not available
+                    view = nil, -- when nil, use defaults from documentation
+                    opts = {}, -- merged with defaults from documentation
                 },
             },
             -- you can enable a preset for easier configuration
