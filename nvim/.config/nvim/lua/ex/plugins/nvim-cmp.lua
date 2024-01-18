@@ -12,6 +12,11 @@ return {
         local cmp = require("cmp")
 
         local luasnip = require("luasnip")
+        require("luasnip").config.set_config({ -- Setting LuaSnip config
+
+            -- Enable autotriggered snippets
+            enable_autosnippets = true,
+        })
 
         local lspkind = require("lspkind")
 
@@ -87,6 +92,28 @@ return {
                     maxwidth = 50,
                     ellipsis_char = "...",
                 }),
+            },
+        })
+        cmp.setup.filetype("tex", {
+            formatting = {
+                -- nvim-cmp overrides the standard completion-menu formatting. We use
+                -- a custom format function to preserve the format as provided by
+                -- VimTeX's omni completion function:
+                format = function(entry, vim_item)
+                    vim_item.menu = ({
+                        omni = (vim.inspect(vim_item.menu):gsub('%"', "")),
+                        buffer = "[Buffer]",
+                        -- formatting for other sources
+                    })[entry.source.name]
+                    return vim_item
+                end,
+            },
+            sources = {
+                { name = "luasnip" }, -- snippets
+                { name = "vimtex" },
+                { name = "omni",  trigger_characters = { "{", "\\" } },
+                -- { name = "buffer" },
+                -- other sources
             },
         })
     end,

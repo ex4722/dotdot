@@ -5,6 +5,7 @@ return {
             ensure_installed = "all",
             highlight = {
                 enable = true,
+                disable = { "latex" },
             },
         }
     end
