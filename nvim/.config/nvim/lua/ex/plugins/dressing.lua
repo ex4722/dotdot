@@ -70,8 +70,7 @@ return {
                 enabled = true,
 
                 -- Telly is currently a bit broken
-                -- backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
-                backend = { "fzf_lua", "fzf", "builtin", "nui" },
+                backend = { "builtin", "nui" },
 
                 -- Trim trailing `:` from prompt
                 trim_prompt = true,
@@ -81,21 +80,6 @@ return {
                 -- telescope = require('telescope.themes').get_ivy({...})
                 telescope = nil,
 
-                -- Options for fzf selector
-                fzf = {
-                    window = {
-                        width = 0.5,
-                        height = 0.4,
-                    },
-                },
-
-                -- Options for fzf-lua
-                fzf_lua = {
-                    -- winopts = {
-                    --   height = 0.5,
-                    --   width = 0.5,
-                    -- },
-                },
 
                 -- Options for nui Menu
                 nui = {
