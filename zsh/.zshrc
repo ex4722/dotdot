@@ -52,7 +52,6 @@ alias g='gdb'
 alias c='clear'
 alias V='sudoedit'
 alias v='nvim'
-alias fd='fdfind'
 alias e="emacsclient -c -a 'emacs'"
 
 
