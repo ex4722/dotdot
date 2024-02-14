@@ -50,3 +50,4 @@ emacs/.emacs.d/.org-generic-id-locations
 emacs/.emacs.d/.gitignore
 emacs/.emacs.d/elpha*
 emacs/.emacs.d/projectile-bookmarks*
+emacs/.emacs.d/elpa/*
