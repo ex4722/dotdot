@@ -53,6 +53,7 @@ alias c='clear'
 alias V='sudoedit'
 alias v='nvim'
 alias e="emacsclient -c -a 'emacs'"
+alias s="kitten ssh"
 
 
 # CTFing
