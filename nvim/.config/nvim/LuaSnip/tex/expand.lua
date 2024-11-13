@@ -10,11 +10,18 @@ local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
 
-return {
-  -- To return multiple snippets, use one `return` statement per snippet file
-  -- and return a table of Lua snippets.
-  require("luasnip").snippet(
-    { trig = "faz" },
-    { t("Another snippet.") }
-  ),
-}
+return { s({trig="eq", dscr="A LaTeX equation environment"},
+  {
+    t({ -- using a table of strings for multiline text
+        "\\begin{equation}",
+        "    "
+      }),
+    i(1),
+    t({
+        "",
+        "\\end{equation}"
+      }),
+  }
+),}
+
+
