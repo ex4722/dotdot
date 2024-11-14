@@ -31,12 +31,5 @@ return {
         }
 
         telescope.load_extension("fzf")
-
-        -- Keymaps 
-        local keymap = vim.keymap
-        keymap.set("n", "<leader>pf","<cmd>Telescope find_files<CR>" , { desc = "Project find file" })
-        keymap.set("n", "<leader>pr", "<cmd>Telescope live_grep<CR>", { desc = "Project rip grep" })
-        keymap.set("n", "<leader>pg", "<cmd>Telescope grep_string<CR>", { desc = "Project grep word under string" })
-        keymap.set("n", "<C-x><C-b>", "<cmd>Telescope buffers<CR>", { desc = "Emacs buffer moment" })
     end
 }
