@@ -15,16 +15,16 @@ return {
 
                 -- Find references for the word under your cursor.
                 -- map('gf', vim.lsp.buf.references, '[G]oto [R]eferences')
-                map('gf', require('telescope.builtin').lsp_references, '[G]oto [R]erences')
+                map('gf', require('fzf-lua').lsp_references, '[G]oto [R]erences')
 
                 -- Jump to the implementation of the word under your cursor.
                 --  Useful when your language has ways of declaring types without an actual implementation.
-                map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+                map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
 
                 -- Jump to the type of the word under your cursor.
                 --  Useful when you're not sure what type a variable is and you want to see
                 --  the definition of its *type*, not where it was *defined*.
-                map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+                map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
                 -- Lists the current diagnostics on this line
                 map('gl', vim.diagnostic.open_float, '[L]ist diagnostics')
@@ -35,7 +35,7 @@ return {
 
                 -- Fuzzy find all the symbols in your current workspace.
                 --  Similar to document symbols, except searches over your entire project.
-                map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+                map('gs', require('fzf-lua').lsp_live_workspace_symbols, '[G]oto Workspace [S]ymbols')
 
                 -- Auto format shit
                 map('<leader>f', vim.lsp.buf.format, '[F]format')
@@ -53,6 +53,12 @@ return {
                 map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
                 map('ga', vim.lsp.buf.code_action, '[G]oto [A]ctions')
+
+                map('K', vim.lsp.buf.hover , 'Hover')
+
+                map('<C-l>', vim.lsp.buf.signature_help, 'signature_help')
+                vim.keymap.set('i', "<C-l>", vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: signature_help' })
+
                 -- The following two autocommands are used to highlight references of the
                 -- word under your cursor when your cursor rests there for a little while.
                 --    See `:help CursorHold` for information about when this is executed
