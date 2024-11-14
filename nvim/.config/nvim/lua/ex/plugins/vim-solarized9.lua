@@ -9,7 +9,7 @@ return {
         vim.cmd ([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
         vim.cmd ([[set t_Co=256]])
         vim.cmd("hi VertSplit ctermfg=236 ctermbg=242 guifg=#268bd2 guibg=#002b36")
-        vim.cmd("hi NormalFloat guibg=#002b36")
+        vim.cmd("hi NormalFloat guibg=#073642")
 
         -- Git Gutter Signs
         vim.cmd("highlight SignColumn guibg=NONE")
