@@ -1,51 +1,63 @@
-export ZSH="/home/ex/.oh-my-zsh"
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+
 DEFAULT_USER=ex
-CASE_SENSITIVE="true"
-HYPHEN_INSENSITIVE="true"
-DISABLE_UPDATE_PROMPT="true"
-POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#757575'
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
-ENABLE_CORRECTION="true"
+
+HYPHEN_INSENSITIVE="true"
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-export UPDATE_ZSH_DAYS=10
-
-plugins=(enhancd asdf git zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search colored-man-pages zsh-fzf-history-search)
+plugins=(git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting enhancd)
 
 source $ZSH/oh-my-zsh.sh
-source /home/ex/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/.cargo/bin
+# User configuration
+export LANG=en_US.UTF-8
 
-# export LD_LIBRARY_PATH=/opt/llvm-project/build/lib:$LD_LIBRARY_PATH
-export LC_ALL=en_US.UTF-8
+# Path Bullshit
+export PATH=$PATH:/home/ex/.local/bin
+export PATH=$PATH:/home/ex/.cargo/bin
+export PATH=$PATH:/home/ex/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/
+export PATH=$PATH:~/.npm-global/bin
+export PATH=$PATH:/home/ex/.gem/ruby/3.3.0/bin
 
-export SUDO_EDITOR=`which nvim`
-export EDITOR=`which nvim`
-export VISUAL=`which nvim`
+export GEM_HOME=$HOME/gems
 
-# personal aliases
-
+# Set personal aliases
 alias tmux="tmux -u"
 alias cd-="cd -"
 alias cd..="cd .."
-alias die="exit"
 alias cat="bat"
-alias ls="exa"
+alias ls="eza"
 
 alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
+
 alias clip="xclip -selection c"
+
+# CTFing
 alias pwnstart="docker "
 alias pi="pwninit --template-path /opt/pwn_temp.py"
 alias check='checksec'
 
-
+# Shortcuts 
 alias p='ipython'
 alias t='tmux'
 alias g='gdb'
@@ -56,63 +68,24 @@ alias e="emacsclient -c -a 'emacs'"
 alias s="kitten ssh"
 
 
-# CTFing
-alias www="list_ips && python3 -m http.server 8080"
-alias tun0="ifconfig tun0 | grep 'inet ' | cut -d' ' -f10 | tr -d '\n' | xclip -sel clip"
-py_tty_upgrade () {
-  echo "python -c 'import pty;pty.spawn(\"/bin/bash\")'"| xclip -sel clip
-}
-py3_tty_upgrade () {
-  echo "python3 -c 'import pty;pty.spawn(\"/bin/bash\")'"| xclip -sel clip
-}
-alias script_tty_upgrade="echo '/usr/bin/script -qc /bin/bash /dev/null'| xclip -sel clip"
-alias tty_fix="stty raw -echo; fg; reset"
-alias tty_conf="stty -a | sed 's/;//g' | head -n 1 | sed 's/.*baud /stty /g;s/line.*//g' | xclip -sel clip"
-list_ips() {
-  ip a show scope global | awk '/^[0-9]+:/ { sub(/:/,"",$2); iface=$2 } /^[[:space:]]*inet / { split($2, a, "/"); print "[\033[96m" iface"\033[0m] "a[1] }'
-}
-
-alias curlp="curl --proxy http://localhost:8080"
-
 # VIM KEYBINDS BITCH
 bindkey -v
 bindkey '^F' autosuggest-accept
 bindkey '^[.' insert-last-word
 bindkey '^r'  fzf_history_search
-bindkey '^k' history-substring-search-up
-bindkey '^j' history-substring-search-down
 
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-bindkey -M vicmd '^r' fzf_history_search 
+bindkey '^k' up-line-or-history
+bindkey '^j' down-line-or-history
+bindkey -M vicmd 'k' up-line-or-history
+bindkey -M vicmd 'j' down-line-or-history
 
+bindkey -M vicmd '^r' fzf_history_search
 
-alias luamake=/opt/lua-language-server/3rd/luamake/luamake
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+" --color=bg+:#073642,bg:#002b36,spinner:#2aa198,hl:#268bd2"\
+" --color=fg:#839496,header:#268bd2,info:#2aa198,pointer:#268bd2"\
+" --color=marker:#2aa198,fg+:#eee8d5,prompt:#268bd2,hl+:#268bd2"\
 
-# Disable zsh slow printing
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-
- pastefinish() {
-   zle -N self-insert $OLD_SELF_INSERT
- }
- zstyle :bracketed-paste-magic paste-init pasteinit
- zstyle :bracketed-paste-magic paste-finish pastefinish
-
-
-
-eval "$(thefuck --alias)"
-
-
-if [ "$HOST" = "pop-os" ]; then
-    # popos
-else
-    # do shit for nova
-fi
-# . ~/.asdf/plugins/golang/set-env.zsh
-export GOPATH=$(dirname $(dirname `asdf which go` ))
-# . ~/.asdf/plugins/java/set-java-home.zsh
-export JAVAHOME=$(dirname $(dirname `asdf which java` ))
-. "$HOME/.asdf/asdf.sh"
+export PATH=$PATH:/home/ex/.spicetify
