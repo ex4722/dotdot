@@ -1,0 +1,45 @@
+sudo chown ex:ex /opt
+
+yay -S zsh rofi stow xclip curl wget ipython tmux base-devel cmake unzip ninja nitrogen spicetify-cli flameshot htop btop luarocks polybar arandr discord dust syncthing strace ltrace
+# this ones a bitch
+#yay -S spotify
+
+# spicetify shit
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wr /opt/spotify/Apps -R
+
+
+
+
+
+
+git clone git@github.com:ex4722/dotfiles.git /opt/dotfiles
+git clone https://github.com/neovim/neovim /opt/neovim
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+git clone https://github.com/joshskidmore/zsh-fzf-history-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
+git clone git clone https://github.com/b4b4r07/enhancd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/enhancd
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs latest
+asdf global nodejs latest
+
+asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+asdf install rust latest
+asdf global rust latest
+
+asdf plugin add lua-language-server https://github.com/bellini666/asdf-lua-language-server.git
+
+asdf install lua-language-server latest
+asdf global lua-language-server latest
+
+cargo install exa bat ripgrep fd-find
+
+# fonts bullshit
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Regular/JetBrainsMonoNerdFontMono-Regular.ttf -P /tmp
+sudo mv /tmp/JetBrainsMonoNerdFontMono-Regular.ttf /usr/share/fonts
+fc-cache
+
