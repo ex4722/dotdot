@@ -49,7 +49,14 @@
     :prefix "SPC"
     :global-prefix "C-SPC")
 
-  (general-evil-setup))
+  (general-evil-setup)) 
+
+(ex/leader-keys
+"g" '(magit-status :which-key "Magit")
+"c" '(org-capture :which-key "Capture")
+"r" '(org-roam-capture :which-key "Roam Capture")
+"i" '(my-edit-configuration :which-key "Edit init.org")
+)
 
 (use-package evil 
   :init 
@@ -180,6 +187,33 @@
 
 (use-package visual-fill-column
   :hook (org-mode . ex/org-mode-visual-fill))
+
+(setq org-capture-templates
+	    `(("t" "Tasks / Projects")
+	      ("tt" "Task" entry (file+olp "~/life/refile.org" "Inbox")
+	       "* TODO  %?\n  %U\n" :kill-buffer t :empty-lines 1 )
+	      ("tw" "Linked Task" entry (file+olp "~/life/refile.org" "Inbox")
+	       "* TODO  %?\n  %U\n %a\n  %i" :kill-buffer t :empty-lines 1 )
+
+	      ("e" "Event" entry (file+olp "~/life/events.org" "Events")
+	       "*  %?\n  %U\n" :kill-buffer t :empty-lines 1 )
+
+	      ("j" "Journal Entries")
+	      ("jj" "Journal" entry
+	       (file+olp+datetree "~/life/journal.org")
+	       "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
+	       ;; ,(dw/read-file-as-string "~/Notes/Templates/Daily.org")
+	       :clock-in :clock-resume
+	       :empty-lines 1)
+	      ("jm" "Morning Journal" entry
+	       (file+olp+datetree "~/life/journal.org")
+	       "\n* %<%I:%M %p> - Journal :journal:\n%?\n** Morning Entry\n*** Looking Forward To\n*** Day Plan\n*** Misc"
+	       :clock-in :clock-resume
+	       :empty-lines 1)
+	    ("m" "Metrics Capture")
+	  ("mw" "Weight" table-line (file+headline "~/Projects/Code/emacs-from-scratch/life/Metrics.org" "Weight")
+	   "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)
+))
 
 (use-package all-the-icons
   )

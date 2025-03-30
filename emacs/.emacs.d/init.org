@@ -68,6 +68,13 @@ Use general for keymaps + LeaderKey idea
       :global-prefix "C-SPC")
 
     (general-evil-setup)) 
+
+  (ex/leader-keys
+  "g" '(magit-status :which-key "Magit")
+  "c" '(org-capture :which-key "Capture")
+  "r" '(org-roam-capture :which-key "Roam Capture")
+  "i" '(my-edit-configuration :which-key "Edit init.org")
+  )
 #+end_src
 
 * Evil Mode
@@ -151,7 +158,6 @@ Uses jk instead of <ESC> to get back into normal mode
       :timeout 0.25
       "k" 'evil-normal-state))
 #+end_src
-
 
 * Auto Tangle
 Having Babel allows us to hook the save of this .org file and auto generate the .el config file.
@@ -242,6 +248,36 @@ Hook spacing for org-mode
 
   (use-package visual-fill-column
     :hook (org-mode . ex/org-mode-visual-fill))
+#+end_src
+
+** Journal
+#+begin_src emacs-lisp
+      (setq org-capture-templates
+	    `(("t" "Tasks / Projects")
+	      ("tt" "Task" entry (file+olp "~/life/refile.org" "Inbox")
+	       "* TODO  %?\n  %U\n" :kill-buffer t :empty-lines 1 )
+	      ("tw" "Linked Task" entry (file+olp "~/life/refile.org" "Inbox")
+	       "* TODO  %?\n  %U\n %a\n  %i" :kill-buffer t :empty-lines 1 )
+
+	      ("e" "Event" entry (file+olp "~/life/events.org" "Events")
+	       "*  %?\n  %U\n" :kill-buffer t :empty-lines 1 )
+
+	      ("j" "Journal Entries")
+	      ("jj" "Journal" entry
+	       (file+olp+datetree "~/life/journal.org")
+	       "\n* %<%I:%M %p> - Journal :journal:\n\n%?\n\n"
+	       ;; ,(dw/read-file-as-string "~/Notes/Templates/Daily.org")
+	       :clock-in :clock-resume
+	       :empty-lines 1)
+	      ("jm" "Morning Journal" entry
+	       (file+olp+datetree "~/life/journal.org")
+	       "\n* %<%I:%M %p> - Journal :journal:\n%?\n** Morning Entry\n*** Looking Forward To\n*** Day Plan\n*** Misc"
+	       :clock-in :clock-resume
+	       :empty-lines 1)
+	    ("m" "Metrics Capture")
+	  ("mw" "Weight" table-line (file+headline "~/Projects/Code/emacs-from-scratch/life/Metrics.org" "Weight")
+	   "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)
+))
 #+end_src
 
 * Eye Candy 
