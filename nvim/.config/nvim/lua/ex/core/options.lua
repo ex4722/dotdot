@@ -56,7 +56,13 @@ local options = {
    -- Mouse
    guicursor = '',
    mouse = 'c',
+
+    -- spelllang
+   spelllang='en',
 }
+
+
+
 
 for opt, value in pairs(options) do
     vim.opt[opt] = value

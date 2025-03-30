@@ -1,5 +1,7 @@
 -- Leader to space
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 
 local keymap = vim.keymap
 
@@ -32,6 +34,14 @@ keymap.set("x", "K", ":m '<-2<CR>gv=gv", {desc = "Stays in place during join"})
 
 -- Faster save 2 keys instead of 4
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "Faster Save" })
+
+-- Remove Control J and K for auto complete
+-- keymap.set("i", "<C-j>", "", {desc = "Noremap"})
+-- keymap.set("i", "<C-k>", "", {desc = "Noremap"})
+
+vim.api.nvim_set_keymap('i', '<C-k>', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-j>', '', { noremap = true, silent = true })
+
 
 local M = {}
 
