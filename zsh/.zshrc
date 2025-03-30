@@ -58,7 +58,7 @@ alias pi="pwninit --template-path /opt/pwn_temp.py"
 alias check='checksec'
 
 # Shortcuts 
-alias p='ipython'
+alias p='ipython3'
 alias t='tmux'
 alias g='gdb'
 alias c='clear'
@@ -81,7 +81,6 @@ bindkey -M vicmd 'j' down-line-or-history
 
 bindkey -M vicmd '^r' fzf_history_search
 
-# Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=bg+:#073642,bg:#002b36,spinner:#2aa198,hl:#268bd2"\
@@ -89,3 +88,5 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=marker:#2aa198,fg+:#eee8d5,prompt:#268bd2,hl+:#268bd2"\
 
 export PATH=$PATH:/home/ex/.spicetify
+
+. "$HOME/.asdf/asdf.sh"
