@@ -26,6 +26,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting enhancd)
 
 source $ZSH/oh-my-zsh.sh
+<<<<<<< Updated upstream
+=======
+# source /home/ex/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+>>>>>>> Stashed changes
 
 # User configuration
 export LANG=en_US.UTF-8
@@ -88,4 +92,27 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=fg:#839496,header:#268bd2,info:#2aa198,pointer:#268bd2"\
 " --color=marker:#2aa198,fg+:#eee8d5,prompt:#268bd2,hl+:#268bd2"\
 
+<<<<<<< Updated upstream
 export PATH=$PATH:/home/ex/.spicetify
+=======
+# Disable zsh slow printing
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+ pastefinish() {
+   zle -N self-insert $OLD_SELF_INSERT
+ }
+ zstyle :bracketed-paste-magic paste-init pasteinit
+ zstyle :bracketed-paste-magic paste-finish pastefinish
+
+
+
+
+if [ "$HOST" = "pop-os" ]; then
+    # popos
+else
+    # do shit for nova
+fi
+>>>>>>> Stashed changes

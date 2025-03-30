@@ -16,7 +16,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 echo $DIR/config.ini
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-    if hostname | grep pop-os 
+    if hostname | grep nebula 
     then
         HEIGHT=33 INTERFACE=wlp0s20f3 MONITOR=$m polybar -q main -c "$DIR/config.ini" &	
     else

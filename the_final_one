@@ -30,5 +30,9 @@ cp /opt/dotfiles/ipython_config.py ~/.ipython/profile_default/
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 git clone git://git.savannah.gnu.org/emacs.git /opt/emacs
 export CC="gcc-10"
-(cd /opt/emacs && gitcheck emacs-28.2 && ./autogen.sh && ./configure --with-native-compilation -with-json --with-modules --with-harfbuzz --with-compress-install ds --with-included-regex --with-zlib --with-jpeg --with-png --with-imagemagick --with-tiff --with-xpm --with-gnutls -with-xml2 --with-mailutils && make -j`nproc`  )
+(cd /opt/emacs && git checkout emacs-28.2 && ./autogen.sh && ./configure --with-native-compilation -with-json --with-modules --with-harfbuzz --with-compress-install ds --with-included-regex --with-zlib --with-jpeg --with-png --with-imagemagick --with-tiff --with-xpm --with-gnutls -with-xml2 --with-mailutils && make -j`nproc`  )
 ~/.emacs.d/bin/doom install
+
+
+# for arch
+yay -S zsh rofi stow xclip curl wget ipython

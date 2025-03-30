@@ -1,11 +1,88 @@
 return {
     "neovim/nvim-lspconfig",
     config = function()
+<<<<<<< Updated upstream
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
             callback = function(event)
                 local map = function(keys, func, desc)
                     vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+=======
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+            border = "rounded",
+        })
+
+        vim.diagnostic.config({
+            virtual_text = false,
+        })
+        local lspconfig = require("lspconfig")
+        local cmp_nvim_lsp = require("cmp_nvim_lsp")
+        local keymap = vim.keymap.set
+        local capabilities = cmp_nvim_lsp.default_capabilities()
+        capabilities.offsetEncoding = { "utf-16" }
+
+        local on_attach = function(client, bufnr)
+            -- if client.server_capabilities.inlayHintProvider then
+            --     vim.lsp.inlay_hint(bufnr, true)
+            -- end
+            -- require("clangd_extensions.inlay_hints").setup_autocmd()
+            -- require("clangd_extensions.inlay_hints").set_inlay_hints()
+        end
+
+        lspconfig.pyright.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+        lspconfig.rust_analyzer.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+        -- lspconfig.ltex.setup({
+        --     capabilities = capabilities,
+        --     on_attach = on_attach,
+        --
+        -- })
+
+        local html_cap = vim.lsp.protocol.make_client_capabilities()
+        html_cap.textDocument.completion.completionItem.snippetSupport = true
+
+        require'lspconfig'.html.setup {
+        capabilities = html_cap,
+            on_attach = on_attach,
+        }
+        require'lspconfig'.cssls.setup {
+            capabilities = html_cap,
+            on_attach = on_attach,
+        }
+
+
+        require 'lspconfig'.lua_ls.setup {
+            on_init = function(client)
+                local path = client.workspace_folders[1].name
+                if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+                    client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+                        Lua = {
+                            runtime = {
+                                -- Tell the language server which version of Lua you're using
+                                -- (most likely LuaJIT in the case of Neovim)
+                                version = 'LuaJIT'
+                            },
+                            -- Make the server aware of Neovim runtime files
+                            workspace = {
+                                checkThirdParty = false,
+                                library = {
+                                    vim.env.VIMRUNTIME
+                                    -- "${3rd}/luv/library"
+                                    -- "${3rd}/busted/library",
+                                }
+                                -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                                -- library = vim.api.nvim_get_runtime_file("", true)
+                            }
+                        }
+                    })
+
+                    client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+>>>>>>> Stashed changes
                 end
 
                 -- Jump to the definition of the word under your cursor.
