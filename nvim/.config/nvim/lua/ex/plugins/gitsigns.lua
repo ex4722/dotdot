@@ -10,14 +10,14 @@ return {
                 topdelete = { text = "契" },
                 untracked    = { text = '┆' },
             },
-            signs_staged = {
-                add = { text = "▎" },
-                change = { text = "▎" },
-                delete = { text = "契" },
-                changedelete = { text = "▎" },
-                topdelete = { text = "契" },
-                untracked    = { text = '┆' },
-            },
+            -- signs_staged = {
+            --     add = { text = "▎" },
+            --     change = { text = "▎" },
+            --     delete = { text = "契" },
+            --     changedelete = { text = "▎" },
+            --     topdelete = { text = "契" },
+            --     untracked    = { text = '┆' },
+            -- },
             signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
             numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
             linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
