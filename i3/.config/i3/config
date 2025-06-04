@@ -94,6 +94,7 @@ bindsym $mod+Shift+h move right
 # atl tabshit 
 bindsym $mod+Tab workspace back_and_forth
 
+bindsym $mod+Shift+t exec i3lock 
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
