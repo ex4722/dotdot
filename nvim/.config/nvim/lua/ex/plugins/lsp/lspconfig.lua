@@ -153,7 +153,7 @@ return {
         require'lspconfig'.texlab.setup{}
         require'lspconfig'.ts_ls.setup{}
         require'lspconfig'.asm_lsp.setup{}
-        require'lspconfig'.rust_analyzer.setup{}
+        -- require'lspconfig'.rust_analyzer.setup{}
 
     end
 }

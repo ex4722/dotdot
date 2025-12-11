@@ -56,6 +56,9 @@ M.save_and_exec = function()
     elseif ft == 'c' then
         vim.cmd('silent! write')
         vim.cmd('make')
+    elseif ft == 'rust' then
+        vim.cmd.RustLsp('run') 
+        -- vim.cmd("exec 'silent !tmux new-window cargo run & cat'")
     end
 end
 

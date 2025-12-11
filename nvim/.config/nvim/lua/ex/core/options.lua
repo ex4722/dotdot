@@ -1,7 +1,7 @@
 function get_undodir()
     -- on macbook
     if vim.fn.has("macunix") == 1 then
-        return "/User/cxiaoedd/.config/nvim/undodir"
+        return "/Users/ex/.config/nvim/undodir"
     -- dev desktop
     elseif string.find(vim.fn.hostname(), "dev") then
         return "/home/cxiaoedd/.config/nvim/undodir"

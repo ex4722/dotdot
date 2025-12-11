@@ -2,10 +2,15 @@ return {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim',
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
+        {'debugloop/telescope-undo.nvim'}
     },
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
+        require("telescope").load_extension("undo")
+        vim.keymap.set("n", "gu", "<cmd>Telescope undo<cr>")
+
+
 
         telescope.setup{
             defaults = {

@@ -5,7 +5,7 @@ return {
             signs = {
                 add = { text = "▎" },
                 change = { text = "▎" },
-                delete = { text = "契" },
+                delete = { text = "▎" },
                 changedelete = { text = "▎" },
                 topdelete = { text = "契" },
                 untracked    = { text = '┆' },
@@ -13,7 +13,7 @@ return {
             signs_staged = {
                 add = { text = "▎" },
                 change = { text = "▎" },
-                delete = { text = "契" },
+                delete = { text = "▎" },
                 changedelete = { text = "▎" },
                 topdelete = { text = "契" },
                 untracked    = { text = '┆' },
