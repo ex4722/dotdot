@@ -42,6 +42,7 @@ exec --no-startup-id nitrogen --restore
 # exec --no-startup-id xmodmap ~/.Xmodmap 
 
 exec --no-startup-id bash /home/ex/.screenlayout/monitor.sh
+exec_always setxkbmap -option "caps:ctrl_modifier"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status

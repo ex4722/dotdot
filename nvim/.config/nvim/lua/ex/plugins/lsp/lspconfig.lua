@@ -70,10 +70,13 @@ return {
         vim.lsp.config.python= {
             cmd = {'pyright'},
             root_markers = { '.git', '__init__.py' },
-            filetypes = { 'python'},
+            filetypes = {'python'},
         }
 
         vim.lsp.enable('clangd')
+        vim.lsp.enable('pyright')
+        vim.lsp.enable('gopls')
+        vim.lsp.enable('rust-analyzer')
 
     end
 }
