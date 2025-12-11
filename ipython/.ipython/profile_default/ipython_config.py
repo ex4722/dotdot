@@ -46,10 +46,9 @@ from prompt_toolkit.key_binding.vi_state import InputMode, ViState
 #
 #
 #
-# c.TerminalInteractiveShell.editing_mode = "vi"
 # c.TerminalInteractiveShell.emacs_bindings_in_vi_insert_mode = False
-# c.TerminalInteractiveShell.timeoutlen = 0.25
-# c.TerminalInteractiveShell.highlighting_style = 'solarized-dark'
+c.TerminalInteractiveShell.timeoutlen = 0.25
+c.TerminalInteractiveShell.highlighting_style = 'solarized-dark'
 
 
 
@@ -64,3 +63,4 @@ from prompt_toolkit.key_binding.vi_state import InputMode, ViState
 #     @vi_insert_mode_keybinding("k", "k")
 #     def switch_to_navigation_mode(event):
 #         event.cli.vi_state.input_mode = InputMode.NAVIGATION
+c.TerminalInteractiveShell.editing_mode = 'vi'
