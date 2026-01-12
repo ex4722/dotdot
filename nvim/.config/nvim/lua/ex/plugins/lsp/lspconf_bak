@@ -1,0 +1,183 @@
+return {
+    "neovim/nvim-lspconfig",
+    config = function()
+        vim.api.nvim_create_autocmd('LspAttach', {
+            group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
+            callback = function(event)
+                local map = function(keys, func, desc)
+                    vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+                    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                        border = "rounded",
+                    })
+
+                    vim.diagnostic.config({
+                        virtual_text = false,
+                    })
+                    local lspconfig = require("lspconfig")
+                    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+                    local keymap = vim.keymap.set
+                    local capabilities = cmp_nvim_lsp.default_capabilities()
+                    capabilities.offsetEncoding = { "utf-16" }
+
+                    local on_attach = function(client, bufnr)
+                        -- if client.server_capabilities.inlayHintProvider then
+                        --     vim.lsp.inlay_hint(bufnr, true)
+                        -- end
+                        -- require("clangd_extensions.inlay_hints").setup_autocmd()
+                        -- require("clangd_extensions.inlay_hints").set_inlay_hints()
+                    end
+
+                    lspconfig.pyright.setup({
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                    })
+                    lspconfig.rust_analyzer.setup({
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                    })
+                    -- lspconfig.ltex.setup({
+                    --     capabilities = capabilities,
+                    --     on_attach = on_attach,
+                    --
+                    -- })
+
+                    local html_cap = vim.lsp.protocol.make_client_capabilities()
+                    html_cap.textDocument.completion.completionItem.snippetSupport = true
+
+                    require'lspconfig'.html.setup {
+                        capabilities = html_cap,
+                        on_attach = on_attach,
+                    }
+                    require'lspconfig'.cssls.setup {
+                        capabilities = html_cap,
+                        on_attach = on_attach,
+                    }
+
+
+                    require 'lspconfig'.lua_ls.setup {
+                        on_init = function(client)
+                            local path = client.workspace_folders[1].name
+                            if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+                                client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+                                    Lua = {
+                                        runtime = {
+                                            -- Tell the language server which version of Lua you're using
+                                            -- (most likely LuaJIT in the case of Neovim)
+                                            version = 'LuaJIT'
+                                        },
+                                        -- Make the server aware of Neovim runtime files
+                                        workspace = {
+                                            checkThirdParty = false,
+                                            library = {
+                                                vim.env.VIMRUNTIME
+                                                -- "${3rd}/luv/library"
+                                                -- "${3rd}/busted/library",
+                                            }
+                                            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                                            -- library = vim.api.nvim_get_runtime_file("", true)
+                                        }
+                                    }
+                                })
+
+                                client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+                            end
+                    }
+                end
+
+                    -- Jump to the definition of the word under your cursor.
+                    --  This is where a variable was first declared, or where a function is defined, etc.
+                    --  To jump back, press <C-t>.
+                    map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+
+                    -- Find references for the word under your cursor.
+                    -- map('gf', vim.lsp.buf.references, '[G]oto [R]eferences')
+                    map('gf', require('fzf-lua').lsp_references, '[G]oto [R]erences')
+
+                    -- Jump to the implementation of the word under your cursor.
+                    --  Useful when your language has ways of declaring types without an actual implementation.
+                    map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
+
+                    -- Jump to the type of the word under your cursor.
+                    --  Useful when you're not sure what type a variable is and you want to see
+                    --  the definition of its *type*, not where it was *defined*.
+                    map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+
+                    -- Lists the current diagnostics on this line
+                    map('gl', vim.diagnostic.open_float, '[L]ist diagnostics')
+
+                    -- Fuzzy find all the symbols in your current document.
+                    --  Symbols are things like variables, functions, types, etc.
+                    -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+
+                    -- Fuzzy find all the symbols in your current workspace.
+                    --  Similar to document symbols, except searches over your entire project.
+                    map('gs', require('fzf-lua').lsp_live_workspace_symbols, '[G]oto Workspace [S]ymbols')
+
+                    -- Auto format shit
+                    map('<leader>f', vim.lsp.buf.format, '[F]format')
+
+                    -- Rename the variable under your cursor.
+                    --  Most Language Servers support renaming across files, etc.
+                    map('gr', vim.lsp.buf.rename, '[R]ename')
+
+                    -- Execute a code action, usually your cursor needs to be on top of an error
+                    -- or a suggestion from your LSP for this to activate.
+                    map('gc', vim.lsp.buf.code_action, '[C]ode [A]ction')
+
+                    -- WARN: This is not Goto Definition, this is Goto Declaration.
+                    --  For example, in C this would take you to the header.
+                    map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+                    map('ga', vim.lsp.buf.code_action, '[G]oto [A]ctions')
+
+                    map('K', vim.lsp.buf.hover , 'Hover')
+
+                    map('<C-l>', vim.lsp.buf.signature_help, 'signature_help')
+                    vim.keymap.set('i', "<C-l>", vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: signature_help' })
+
+
+                    -- The following code creates a keymap to toggle inlay hints in your
+                    -- code, if the language server you are using supports them
+                    -- This may be unwanted, since they displace some of your code
+                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                        map('ghh', function()
+                            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                        end, '[T]oggle Inlay [H]ints')
+                    end
+                end,
+
+                -- vim.diagnostic.config({
+                --     virtual_text = false,
+                -- })
+                --
+                --
+                -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+                -- -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+                --
+                -- require'lspconfig'.pyright.setup{}
+                -- require'lspconfig'.clangd.setup{
+                --     settings = {
+                --         clangd = {
+                --             InlayHints = {
+                --                 Designators = true,
+                --                 Enabled = true,
+                --                 ParameterNames = true,
+                --                 DeducedTypes = true,
+                --             },
+                --             fallbackFlags = { "-std=c++20" },
+                --         },
+                --     }
+                --
+                --
+                -- }
+                -- require'lspconfig'.texlab.setup{}
+                -- require'lspconfig'.ts_ls.setup{}
+                -- require'lspconfig'.asm_lsp.setup{}
+                -- require'lspconfig'.rust_analyzer.setup{}
+        end
+        })
+
+    end
+end
+}

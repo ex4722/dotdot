@@ -26,6 +26,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting enhancd)
 
 source $ZSH/oh-my-zsh.sh
+# source /home/ex/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # User configuration
 export LANG=en_US.UTF-8
@@ -34,6 +35,7 @@ export LANG=en_US.UTF-8
 export PATH=$PATH:/opt/homebrew/bin
 export PATH=$PATH:/Users/ex/Library/Python/3.9/bin
 export PATH=$PATH:/Users/ex/Downloads/platform-tools
+export PATH=$PATH:"/Applications/Racket v9.0/bin"
 . "$HOME/.cargo/env"
 
 # Set personal aliases
@@ -91,7 +93,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=fg:#839496,header:#268bd2,info:#2aa198,pointer:#268bd2"\
 " --color=marker:#2aa198,fg+:#eee8d5,prompt:#268bd2,hl+:#268bd2"\
 
-export PATH=$PATH:/home/ex/.spicetify
 export PATH=$PATH:/opt/nvim/bin
 export PATH=$PATH:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains
 export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
@@ -99,3 +100,20 @@ export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
 . ~/.asdf/plugins/java/set-java-home.zsh
 
 . "$HOME/.local/bin/env"
+# Disable zsh slow printing
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+ zstyle :bracketed-paste-magic paste-init pasteinit
+ zstyle :bracketed-paste-magic paste-finish pastefinish
+
+
+
+
+if [ "$HOST" = "pop-os" ]; then
+    # popos
+else
+    # do shit for nova
+fi

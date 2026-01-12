@@ -10,7 +10,7 @@ return {
     -- },
     config = function()
         vim.g.vimtex_view_method = "zathura"
-        vim.o.foldmethod = "expr"
+        vim.o.foldmethod = "manual"
         vim.o.foldexpr="vimtex#fold#level(v:lnum)"
         vim.o.foldtext="vimtex#fold#text()"
         -- I like to see at least the content of the sections upon opening

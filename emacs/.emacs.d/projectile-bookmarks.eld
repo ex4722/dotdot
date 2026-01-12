@@ -1,1 +1,1 @@
-("~/life/" "/opt/dotdot/" "~/")
+("/opt/dotdot/" "~/code/personal_website/" "~/")

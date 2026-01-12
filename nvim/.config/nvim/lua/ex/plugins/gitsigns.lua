@@ -7,7 +7,7 @@ return {
                 change = { text = "▎" },
                 delete = { text = "▎" },
                 changedelete = { text = "▎" },
-                topdelete = { text = "契" },
+                topdelete = { text = "▎" },
                 untracked    = { text = '┆' },
             },
             signs_staged = {
@@ -15,7 +15,7 @@ return {
                 change = { text = "▎" },
                 delete = { text = "▎" },
                 changedelete = { text = "▎" },
-                topdelete = { text = "契" },
+                topdelete = { text = "▎" },
                 untracked    = { text = '┆' },
             },
             signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
