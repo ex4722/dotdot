@@ -31,13 +31,10 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Path Bullshit
-export PATH=$PATH:/home/ex/.local/bin
-export PATH=$PATH:/home/ex/.cargo/bin
-export PATH=$PATH:/home/ex/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/
-export PATH=$PATH:~/.npm-global/bin
-export PATH=$PATH:/home/ex/.gem/ruby/3.3.0/bin
-
-export GEM_HOME=$HOME/gems
+export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/Users/ex/Library/Python/3.9/bin
+export PATH=$PATH:/Users/ex/Downloads/platform-tools
+. "$HOME/.cargo/env"
 
 # Set personal aliases
 alias tmux="tmux -u"
@@ -50,7 +47,13 @@ alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
 
-alias clip="xclip -selection c"
+CURRENT_HOSTNAME=$(hostname)
+if [[ "$CURRENT_HOSTNAME" == "Lyra" ]]; then
+    alias clip="tr -d '\n' | pbcopy"
+else
+    alias clip="xclip -selection c"
+fi
+
 
 # CTFing
 alias pwnstart="docker "
@@ -89,3 +92,10 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=marker:#2aa198,fg+:#eee8d5,prompt:#268bd2,hl+:#268bd2"\
 
 export PATH=$PATH:/home/ex/.spicetify
+export PATH=$PATH:/opt/nvim/bin
+export PATH=$PATH:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains
+export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
+
+. ~/.asdf/plugins/java/set-java-home.zsh
+
+. "$HOME/.local/bin/env"
