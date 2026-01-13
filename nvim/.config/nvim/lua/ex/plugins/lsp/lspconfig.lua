@@ -83,8 +83,24 @@ return {
             single_file_support = true,
         }
 
+        vim.lsp.config.omnisharp= {
+            cmd = {
+                "/Users/ex/Downloads/omnisharp-osx-arm64-net6.0/OmniSharp",
+                "--languageserver",
+                "--hostPID",
+                tostring(vim.fn.getpid()),
+            },
+
+            cmd_env = {
+                DOTNET_ROOT = "/usr/local/share/dotnet/"
+            },
+            filetypes = { "cs" },
+            root_markers = { "*.sln", "*.csproj", ".git" },
+        }
+
         vim.lsp.enable('python')
         vim.lsp.enable('clangd')
+        vim.lsp.enable('omnisharp')
         vim.lsp.enable('racket_langserver')
 
 
