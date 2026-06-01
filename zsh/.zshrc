@@ -15,27 +15,18 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+export EDITOR="nvim"
+export VISUAL="nvim"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(git colored-man-pages zsh-autosuggestions zsh-syntax-highlighting enhancd)
 
 source $ZSH/oh-my-zsh.sh
-# source /home/ex/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+
 
 # User configuration
 export LANG=en_US.UTF-8
 
-# Path Bullshit
-export PATH=$PATH:/opt/homebrew/bin
-export PATH=$PATH:/Users/ex/Library/Python/3.9/bin
-export PATH=$PATH:/Users/ex/Downloads/platform-tools
-export PATH=$PATH:"/Applications/Racket v9.0/bin"
 . "$HOME/.cargo/env"
 
 # Set personal aliases
@@ -43,14 +34,23 @@ alias tmux="tmux -u"
 alias cd-="cd -"
 alias cd..="cd .."
 alias cat="bat"
+alias ccat="/bin/cat"
 alias ls="eza"
 
 alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
 
-CURRENT_HOSTNAME=$(hostname)
-if [[ "$CURRENT_HOSTNAME" == "Lyra" ]]; then
+if [[ `uname -a` == *"Darwin"* ]]; then
+    export PATH=$PATH:/opt/homebrew/bin
+    export PATH=$PATH:/Users/ex/Library/Python/3.9/bin
+    export PATH=$PATH:/Users/ex/Downloads/platform-tools
+    export PATH=$PATH:"/Applications/Racket v9.0/bin"
+    export PATH=$PATH:/opt/nvim/bin
+    export PATH=$PATH:~/go/bin
+    export PATH=$PATH:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains
+    export PATH=$PATH:/opt/homebrew/opt/binutils/bin
+    export PATH=$PATH:"/Users/ex/.local/share/solana/install/active_release/bin:"
     alias clip="tr -d '\n' | pbcopy"
 else
     alias clip="xclip -selection c"
@@ -73,6 +73,7 @@ alias e="emacsclient -c -a 'emacs'"
 alias s="kitten ssh"
 
 
+autoload -Uz edit-command-line
 # VIM KEYBINDS BITCH
 bindkey -v
 bindkey '^F' autosuggest-accept
@@ -84,6 +85,8 @@ bindkey '^j' down-line-or-history
 bindkey -M vicmd 'k' up-line-or-history
 bindkey -M vicmd 'j' down-line-or-history
 
+bindkey -M vicmd '^e' edit-command-line
+
 bindkey -M vicmd '^r' fzf_history_search
 
 # Set up fzf key bindings and fuzzy completion
@@ -93,9 +96,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 " --color=fg:#839496,header:#268bd2,info:#2aa198,pointer:#268bd2"\
 " --color=marker:#2aa198,fg+:#eee8d5,prompt:#268bd2,hl+:#268bd2"\
 
-export PATH=$PATH:/opt/nvim/bin
-export PATH=$PATH:/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains
-export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
 
 . ~/.asdf/plugins/java/set-java-home.zsh
 
@@ -106,14 +106,5 @@ pasteinit() {
   zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
 }
 
- zstyle :bracketed-paste-magic paste-init pasteinit
- zstyle :bracketed-paste-magic paste-finish pastefinish
-
-
-
-
-if [ "$HOST" = "pop-os" ]; then
-    # popos
-else
-    # do shit for nova
-fi
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish

@@ -67,19 +67,19 @@ return {
             root_markers = { 'compile_commands.json', 'compile_flags.txt' },
             filetypes = { 'c', 'cpp' },
         }
-
-        vim.lsp.config.python= {
-            cmd = {'pyright'},
-            root_markers = { '.git', '__init__.py' },
-            filetypes = {'python'},
+        vim.lsp.config.python = {
+            cmd = { "pyright-langserver", "--stdio" },
+            filetypes = { "python" },
+            root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
+            single_file_support = true,
         }
 
         vim.lsp.config.racket_langserver= {
             cmd = { 'racket', '--lib', 'racket-langserver' },
             filetypes = { 'racket', 'scheme' },
-            root_dir = function(fname)
-                return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
-            end,
+            -- root_dir = function(fname)
+            --     return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+            -- end,
             single_file_support = true,
         }
 
@@ -102,6 +102,7 @@ return {
         vim.lsp.enable('clangd')
         vim.lsp.enable('omnisharp')
         vim.lsp.enable('racket_langserver')
+        vim.lsp.enable('gopls')
 
 
     end
