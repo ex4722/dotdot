@@ -7,10 +7,6 @@ return {
                     vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                 end
 
-                local client = vim.lsp.get_client_by_id(event.data.client_id)
-                if client:supports_method('textDocument/completion') then
-                    vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-                end
                 map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 
                 -- Find references for the word under your cursor.
