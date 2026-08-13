@@ -41,6 +41,9 @@ alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
 
+alias s='sudo -E env "PATH=$PATH"'
+
+
 if [[ `uname -a` == *"Darwin"* ]]; then
     export PATH=$PATH:/opt/homebrew/bin
     export PATH=$PATH:/Users/ex/Library/Python/3.9/bin
@@ -98,6 +101,8 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
 
 
 . ~/.asdf/plugins/java/set-java-home.zsh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 
 . "$HOME/.local/bin/env"
 # Disable zsh slow printing
@@ -108,3 +113,12 @@ pasteinit() {
 
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
+
+# export ANTHROPIC_AUTH_TOKEN=13d1599a7dc9abcff8a87ac3c8c1797cf693891ec2b894b7e6ea8c10352f30b2
+# export OPENAI_API_KEY=13d1599a7dc9abcff8a87ac3c8c1797cf693891ec2b894b7e6ea8c10352f30b2
+# export OPENAI_BASE_URL=http://192.168.130.7:6001/v1
+# export POLYCULE_TOKEN=13d1599a7dc9abcff8a87ac3c8c1797cf693891ec2b894b7e6ea8c10352f30b2
+# export POLYCULE_HOST=192.168.130.7
+# export POLYCULE_PORT=6001
+# export POLYCULE_BASE_URL=http://192.168.130.7:6001
+# export ANTHROPIC_BASE_URL=http://192.168.130.7:6001
