@@ -51,3 +51,5 @@ emacs/.emacs.d/.gitignore
 emacs/.emacs.d/elpha*
 emacs/.emacs.d/projectile-bookmarks*
 emacs/.emacs.d/elpa/*
+
+karabiner/.config/karabiner/automatic_backups/
