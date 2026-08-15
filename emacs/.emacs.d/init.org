@@ -6,8 +6,10 @@ Just basic stuff + Font
   (setq inhibit-startup-message t)
   (setq user-full-name "Eddie Xiao"
 	user-mail-address "eddie.j.xiao@gmail.com")
-
-  (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font Mono" :height 158) 
+  (if (eq system-type 'darwin)
+      (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 230)
+    (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font Mono" :height 230)
+  )
 #+END_SRC
 
 Makes emacs more minimal, no startup message, toolbars, scroll (Not sure if I need both)
@@ -16,6 +18,13 @@ Makes emacs more minimal, no startup message, toolbars, scroll (Not sure if I ne
   (menu-bar-mode -1) 
   (toggle-scroll-bar -1)
   (scroll-bar-mode 0)
+#+end_src
+
+#+begin_src emacs-lisp
+ (when (eq system-type 'darwin)
+  (setq mac-option-modifier  'meta
+        mac-command-modifier 'control))
+ 
 #+end_src
 
 * Custom Vars
@@ -30,7 +39,6 @@ Use-package is too good to pass on, having params from :init to :custom
 #+begin_src emacs-lisp
     (require 'package)
     (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			     ("org" . "https://orgmode.org/elpa/")
 			     ("elpa" . "https://elpa.gnu.org/packages/")
 			    ("melpa-stable" . "http://stable.melpa.org/packages/") 
   ))
@@ -611,7 +619,7 @@ Hook spacing for org-mode
 ** Roam
 #+begin_src emacs-lisp
 	      (use-package emacsql)
-	      (use-package emacsql-sqlite)
+	      ;; (use-package emacsql-sqlite)
 	      (use-package org-roam
 		  ;; :hook 
 		  ;; (after-init . org-roam-mode)
@@ -920,7 +928,7 @@ Adding to this over time
   (defun reload ()
     (interactive)
     (message "reloading crap")
-    (load-file "/home/ex/.emacs.d/init.el")
+    (load-file "~.emacs.d/init.el")
     )
   (global-set-key (kbd "C-S-r") 'reload)
 
